@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Pass/Fail Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #cccccc;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .result {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Pass/Fail Prediction</h2>
+        <p>Enter the student's details below.</p>
+
+        <form method="POST">
+            <input type="number" name="attendance"
+                   placeholder="Attendance (0-100)"
+                   min="0" max="100" step="any"
+                   required>
+
+            <input type="number" name="python_marks"
+                   placeholder="Python Marks (0-100)"
+                   min="0" max="100" step="any"
+                   required>
+
+            <input type="number" name="ml_marks"
+                   placeholder="ML Marks (0-100)"
+                   min="0" max="100" step="any"
+                   required>
+
+            <button type="submit">Predict Result</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                Prediction: {{ result }}
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
